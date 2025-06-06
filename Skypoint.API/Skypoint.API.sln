@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skypoint.API", "Skypoint.API\Skypoint.API.csproj", "{A2E2D700-35B5-49E2-9B1D-5CAA7743AA74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skypoint.Application", "Skypoint.Application\Skypoint.Application.csproj", "{A6D09310-F5F4-4EEB-8AB8-E8004AD5A73B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skypoint.Infrastructure", "Skypoint.Infrastructure\Skypoint.Infrastructure.csproj", "{E9A575F0-A26E-4E8F-AA71-FF7EE9444157}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skypoint.Domain", "Skypoint.Domain\Skypoint.Domain.csproj", "{03C97C46-B718-45D3-93D3-1D05B3E0C484}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A2E2D700-35B5-49E2-9B1D-5CAA7743AA74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2E2D700-35B5-49E2-9B1D-5CAA7743AA74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2E2D700-35B5-49E2-9B1D-5CAA7743AA74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2E2D700-35B5-49E2-9B1D-5CAA7743AA74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6D09310-F5F4-4EEB-8AB8-E8004AD5A73B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6D09310-F5F4-4EEB-8AB8-E8004AD5A73B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6D09310-F5F4-4EEB-8AB8-E8004AD5A73B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6D09310-F5F4-4EEB-8AB8-E8004AD5A73B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9A575F0-A26E-4E8F-AA71-FF7EE9444157}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9A575F0-A26E-4E8F-AA71-FF7EE9444157}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9A575F0-A26E-4E8F-AA71-FF7EE9444157}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9A575F0-A26E-4E8F-AA71-FF7EE9444157}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03C97C46-B718-45D3-93D3-1D05B3E0C484}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03C97C46-B718-45D3-93D3-1D05B3E0C484}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03C97C46-B718-45D3-93D3-1D05B3E0C484}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03C97C46-B718-45D3-93D3-1D05B3E0C484}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
