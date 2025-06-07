@@ -16,6 +16,6 @@ namespace Skypoint.Domain.Entities
         public ICollection<UserFollow>? Following { get; set; }
         public ICollection<UserFollow>? Followers { get; set; }
         public ICollection<Post> Posts { get; set; } = new List<Post>();
-
+        public ICollection<Vote> Votes { get; set; } = new List<Vote>();
     }
 }

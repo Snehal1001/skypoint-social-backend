@@ -15,6 +15,7 @@ namespace Skypoint.Infrastructure
         public DbSet<User> Users { get; set; }
         public DbSet<UserFollow> UserFollows { get; set; }
         public DbSet<Post> Posts { get; set; }
+        public DbSet<Vote> Votes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -37,6 +38,20 @@ namespace Skypoint.Infrastructure
                 .HasOne(p => p.Author)
                 .WithMany(u => u.Posts)
                 .HasForeignKey(p => p.AuthorId);
+
+            modelBuilder.Entity<Vote>()
+                .HasIndex(v => new { v.UserId, v.PostId })
+                .IsUnique();
+
+            modelBuilder.Entity<Vote>()
+                .HasOne(v => v.User)
+                .WithMany(u => u.Votes)
+                .HasForeignKey(v => v.UserId);
+
+            modelBuilder.Entity<Vote>()
+                .HasOne(v => v.Post)
+                .WithMany(p => p.Votes)
+                .HasForeignKey(v => v.PostId);
         }
 
     }
