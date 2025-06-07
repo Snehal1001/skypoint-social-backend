@@ -8,7 +8,7 @@ namespace Skypoint.Application.IServices
 {
     public interface IAuthService
     {
-        Task<AuthResponseDTO> RegisterAsync(AuthRequestDTO dto);
-        Task<AuthResponseDTO> LoginAsync(AuthRequestDTO dto);
+        Task<AuthResponseDTO?> SignupAsync(AuthRequestDTO dto);
+        Task<AuthResponseDTO?> LoginAsync(AuthRequestDTO dto);
     }
 }

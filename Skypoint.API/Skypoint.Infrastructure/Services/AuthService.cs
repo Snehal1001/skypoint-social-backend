@@ -25,7 +25,7 @@ namespace Skypoint.Infrastructure.Services
             _config = config;
         }
 
-        public async Task<AuthResponseDTO?> RegisterAsync(AuthRequestDTO dto)
+        public async Task<AuthResponseDTO?> SignupAsync(AuthRequestDTO dto)
         {
             if (await _context.Users.AnyAsync(u => u.Email == dto.Email))
                 return null;
@@ -57,9 +57,13 @@ namespace Skypoint.Infrastructure.Services
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]!));
+            var issuer = _config["Jwt:Issuer"];
+            var audience = _config["Jwt:Audience"];
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(
+                issuer: issuer,
+                audience: audience,
                 claims: claims,
                 expires: DateTime.UtcNow.AddHours(1),
                 signingCredentials: creds);

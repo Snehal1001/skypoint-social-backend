@@ -16,10 +16,10 @@ namespace Skypoint.API.Controllers
             _authService = authService;
         }
 
-        [HttpPost("register")]
+        [HttpPost("signup")]
         public async Task<IActionResult> Register([FromBody] AuthRequestDTO dto)
         {
-            var result = await _authService.RegisterAsync(dto);
+            var result = await _authService.SignupAsync(dto);
             return result is null ? Conflict("Email already exists") : Ok(result);
         }
 
