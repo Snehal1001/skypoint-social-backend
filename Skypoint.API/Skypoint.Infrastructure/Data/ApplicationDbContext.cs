@@ -14,24 +14,30 @@ namespace Skypoint.Infrastructure
 
         public DbSet<User> Users { get; set; }
         public DbSet<UserFollow> UserFollows { get; set; }
+        public DbSet<Post> Posts { get; set; }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<UserFollow>()
-            .HasKey(x => new { x.FollowerId, x.FollowedId });
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<UserFollow>()
+                .HasKey(x => new { x.FollowerId, x.FollowedId });
 
-        modelBuilder.Entity<UserFollow>()
-            .HasOne(x => x.Follower)
-            .WithMany(x => x.Following)
-            .HasForeignKey(x => x.FollowerId)
-            .OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<UserFollow>()
+                .HasOne(x => x.Follower)
+                .WithMany(x => x.Following)
+                .HasForeignKey(x => x.FollowerId)
+                .OnDelete(DeleteBehavior.Restrict);
 
-        modelBuilder.Entity<UserFollow>()
-            .HasOne(x => x.Followed)
-            .WithMany(x => x.Followers)
-            .HasForeignKey(x => x.FollowedId)
-            .OnDelete(DeleteBehavior.Restrict);
-    }
+            modelBuilder.Entity<UserFollow>()
+                .HasOne(x => x.Followed)
+                .WithMany(x => x.Followers)
+                .HasForeignKey(x => x.FollowedId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Post>()
+                .HasOne(p => p.Author)
+                .WithMany(u => u.Posts)
+                .HasForeignKey(p => p.AuthorId);
+        }
 
     }
 }
