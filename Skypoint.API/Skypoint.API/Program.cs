@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Skypoint.Application.IServices;
 using Skypoint.Infrastructure;
+using Skypoint.Infrastructure.Seed;
 using Skypoint.Infrastructure.Services;
 using System.Text;
 
@@ -56,13 +57,13 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// using (var scope = app.Services.CreateScope())
-// {
-//     var services = scope.ServiceProvider;
-//     var dbContext = services.GetRequiredService<AppDbContext>();
-//     dbContext.Database.Migrate(); // Ensures DB is created & up to date
-//     await AppDbContextSeed.SeedAsync(dbContext); // Seeds initial data
-// }
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var dbContext = services.GetRequiredService<ApplicationDbContext>();
+    dbContext.Database.Migrate(); // Ensures DB is created & up to date
+    await AppDbContextSeed.SeedAsync(dbContext); // Seeds initial data
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
