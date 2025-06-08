@@ -40,7 +40,7 @@ namespace Skypoint.Infrastructure.Services
 
             var sessionId = await _userSessionService.RecordLoginAsync(user.Id);
 
-            return new AuthResponseDTO { Email = user.Email, Token = GenerateToken(user) };
+            return new AuthResponseDTO { Email = user.Email, Token = GenerateToken(user), CurrentUserId = user.Id };
         }
 
         public async Task<AuthResponseDTO?> LoginAsync(AuthRequestDTO dto)
@@ -51,7 +51,7 @@ namespace Skypoint.Infrastructure.Services
 
             var sessionId = await _userSessionService.RecordLoginAsync(user.Id);
 
-            return new AuthResponseDTO { Email = user.Email, Token = GenerateToken(user) };
+            return new AuthResponseDTO { Email = user.Email, Token = GenerateToken(user), CurrentUserId = user.Id };
         }
 
         public async Task<TimeSpan?> LogoutAsync(Guid userId)
