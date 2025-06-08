@@ -35,9 +35,11 @@ namespace Skypoint.Infrastructure.Services
                 {
                     PostId = p.Id,
                     Content = p.Content,
+                    AuthorId = p.AuthorId,
                     AuthorName = p.Author.UserName,
                     Score = p.Votes.Sum(v => v.Value),
                     TimeAgo = GetTimeAgo(p.CreatedAt),
+                    IsFollowing = followedUserIds.Contains(p.AuthorId),
                     UserVote = p.Votes
                         .Where(v => v.UserId == userId)
                         .Select(v => (int?)v.Value)
@@ -48,7 +50,7 @@ namespace Skypoint.Infrastructure.Services
             return posts;
         }
 
-        private string GetTimeAgo(DateTime createdAt)
+        private static string GetTimeAgo(DateTime createdAt)
         {
             var timespan = DateTime.UtcNow - createdAt;
             if (timespan.TotalMinutes < 1)

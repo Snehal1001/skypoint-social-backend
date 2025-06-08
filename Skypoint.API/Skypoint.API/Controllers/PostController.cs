@@ -23,7 +23,7 @@ namespace Skypoint.API.Controllers
             _postService = postService;
         }
 
-        [HttpPost("create-post")]
+        [HttpPost("create")]
         public async Task<IActionResult> Create(CreatePostDTO request)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);

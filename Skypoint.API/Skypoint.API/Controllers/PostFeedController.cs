@@ -9,7 +9,7 @@ using Skypoint.Application.IServices;
 
 namespace Skypoint.API.Controllers
 {
-    [Authorize]
+    // [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class PostFeedController : ControllerBase
