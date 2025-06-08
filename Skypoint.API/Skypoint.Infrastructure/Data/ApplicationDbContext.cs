@@ -20,18 +20,19 @@ namespace Skypoint.Infrastructure
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<UserFollow>()
-                .HasKey(x => new { x.FollowerId, x.FollowedId });
+                .HasIndex(f => new { f.FollowerId, f.FolloweeId })
+                .IsUnique();
 
             modelBuilder.Entity<UserFollow>()
-                .HasOne(x => x.Follower)
-                .WithMany(x => x.Following)
-                .HasForeignKey(x => x.FollowerId)
+                .HasOne(f => f.Follower)
+                .WithMany(u => u.Following)
+                .HasForeignKey(f => f.FollowerId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<UserFollow>()
-                .HasOne(x => x.Followed)
-                .WithMany(x => x.Followers)
-                .HasForeignKey(x => x.FollowedId)
+                .HasOne(f => f.Followee)
+                .WithMany(u => u.Followers)
+                .HasForeignKey(f => f.FolloweeId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Post>()
