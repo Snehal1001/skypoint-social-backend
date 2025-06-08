@@ -11,6 +11,7 @@ namespace Skypoint.Domain.Entities
         public Guid Id { get; set; } = Guid.NewGuid();
         public string Email { get; set; } = default!;
         public string PasswordHash { get; set; } = default!;
+        public string UserName { get; set; } = default!;
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         public ICollection<UserFollow> Followers { get; set; } = new List<UserFollow>(); // Users who follow me

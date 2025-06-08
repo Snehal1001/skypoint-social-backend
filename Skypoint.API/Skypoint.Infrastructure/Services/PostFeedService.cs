@@ -35,7 +35,7 @@ namespace Skypoint.Infrastructure.Services
                 {
                     PostId = p.Id,
                     Content = p.Content,
-                    AuthorName = p.Author.Email,
+                    AuthorName = p.Author.UserName,
                     Score = p.Votes.Sum(v => v.Value),
                     TimeAgo = GetTimeAgo(p.CreatedAt),
                     UserVote = p.Votes

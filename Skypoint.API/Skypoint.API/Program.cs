@@ -56,6 +56,14 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+// using (var scope = app.Services.CreateScope())
+// {
+//     var services = scope.ServiceProvider;
+//     var dbContext = services.GetRequiredService<AppDbContext>();
+//     dbContext.Database.Migrate(); // Ensures DB is created & up to date
+//     await AppDbContextSeed.SeedAsync(dbContext); // Seeds initial data
+// }
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
