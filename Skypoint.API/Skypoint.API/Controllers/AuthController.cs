@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity.Data;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using Skypoint.Application.DTOs;
 using Skypoint.Application.IServices;
@@ -29,5 +31,23 @@ namespace Skypoint.API.Controllers
             var result = await _authService.LoginAsync(dto);
             return result is null ? Unauthorized("Invalid credentials") : Ok(result);
         }
+
+        [Authorize]
+        [HttpPost("logout")]
+        public async Task<IActionResult> Logout()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var duration = await _authService.LogoutAsync(Guid.Parse(userId));
+
+            if (duration == null)
+                return NotFound("No active session found.");
+
+            return Ok(new
+            {
+                sessionDuration = $"{duration.Value.TotalMinutes:F1} minutes"
+            });
+        }
+
     }
 }

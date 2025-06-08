@@ -18,11 +18,13 @@ namespace Skypoint.Infrastructure.Services
     {
         private readonly ApplicationDbContext _context;
         private readonly IConfiguration _config;
+        private readonly IUserSessionService _userSessionService;
 
-        public AuthService(ApplicationDbContext context, IConfiguration config)
+        public AuthService(ApplicationDbContext context, IConfiguration config, IUserSessionService userSessionService)
         {
             _context = context;
             _config = config;
+            _userSessionService = userSessionService;
         }
 
         public async Task<AuthResponseDTO?> SignupAsync(AuthRequestDTO dto)
@@ -36,6 +38,8 @@ namespace Skypoint.Infrastructure.Services
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
+            var sessionId = await _userSessionService.RecordLoginAsync(user.Id);
+
             return new AuthResponseDTO { Email = user.Email, Token = GenerateToken(user) };
         }
 
@@ -45,7 +49,15 @@ namespace Skypoint.Infrastructure.Services
             if (user == null || !BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash))
                 return null;
 
+            var sessionId = await _userSessionService.RecordLoginAsync(user.Id);
+
             return new AuthResponseDTO { Email = user.Email, Token = GenerateToken(user) };
+        }
+
+        public async Task<TimeSpan?> LogoutAsync(Guid userId)
+        {
+            var duration = await _userSessionService.RecordLogoutAsync(userId);
+            return duration;
         }
 
         private string GenerateToken(User user)

@@ -10,5 +10,7 @@ namespace Skypoint.Application.IServices
     {
         Task<AuthResponseDTO?> SignupAsync(AuthRequestDTO dto);
         Task<AuthResponseDTO?> LoginAsync(AuthRequestDTO dto);
+        Task<TimeSpan?> LogoutAsync(Guid userId);
+
     }
 }

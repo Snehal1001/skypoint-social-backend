@@ -16,6 +16,7 @@ namespace Skypoint.Infrastructure
         public DbSet<UserFollow> UserFollows { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Vote> Votes { get; set; }
+        public DbSet<UserSession> UserSessions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -53,7 +54,11 @@ namespace Skypoint.Infrastructure
                 .HasOne(v => v.Post)
                 .WithMany(p => p.Votes)
                 .HasForeignKey(v => v.PostId);
-        }
 
+            modelBuilder.Entity<UserSession>()
+                .HasOne(s => s.User)
+                .WithMany()
+                .HasForeignKey(s => s.UserId);
+        }
     }
 }
