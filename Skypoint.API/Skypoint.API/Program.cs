@@ -36,6 +36,7 @@ builder.Services.AddScoped<IPostService, PostService>();
 builder.Services.AddScoped<IVoteService, VoteService>();
 builder.Services.AddScoped<IUserFollowService, UserFollowService>();
 builder.Services.AddScoped<IPostFeedService, PostFeedService>();
+builder.Services.AddScoped<IUserSessionService, UserSessionService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
