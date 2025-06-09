@@ -1,7 +1,6 @@
 services:
   - type: web
     name: skypoint-social-backend
-    env: docker # <–– Trick: this forces it to use a custom setup
     plan: free
     buildCommand: dotnet build Skypoint.API/Skypoint.API/Skypoint.API.csproj
     startCommand: dotnet Skypoint.API/Skypoint.API/Skypoint.API.dll
