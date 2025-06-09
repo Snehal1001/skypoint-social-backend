@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<ApplicationDbContext>(option =>
-            option.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+            option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // JWT Authentication setup
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -61,8 +61,8 @@ await using (var scope = app.Services.CreateAsyncScope())
 {
     var services = scope.ServiceProvider;
     var dbContext = services.GetRequiredService<ApplicationDbContext>();
-    dbContext.Database.Migrate(); // Ensures DB is created & up to date
-    await AppDbContextSeed.SeedAsync(dbContext); // Seeds initial data
+    dbContext.Database.Migrate();
+    await AppDbContextSeed.SeedAsync(dbContext);
 }
 
 // Configure the HTTP request pipeline.

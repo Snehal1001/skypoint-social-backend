@@ -39,7 +39,8 @@ namespace Skypoint.Infrastructure
             modelBuilder.Entity<Post>()
                 .HasOne(p => p.Author)
                 .WithMany(u => u.Posts)
-                .HasForeignKey(p => p.AuthorId);
+                .HasForeignKey(p => p.AuthorId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Vote>()
                 .HasIndex(v => new { v.UserId, v.PostId })
@@ -48,17 +49,20 @@ namespace Skypoint.Infrastructure
             modelBuilder.Entity<Vote>()
                 .HasOne(v => v.User)
                 .WithMany(u => u.Votes)
-                .HasForeignKey(v => v.UserId);
+                .HasForeignKey(v => v.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Vote>()
                 .HasOne(v => v.Post)
                 .WithMany(p => p.Votes)
-                .HasForeignKey(v => v.PostId);
+                .HasForeignKey(v => v.PostId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<UserSession>()
                 .HasOne(s => s.User)
                 .WithMany()
-                .HasForeignKey(s => s.UserId);
+                .HasForeignKey(s => s.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
