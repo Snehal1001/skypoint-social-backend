@@ -1,6 +1,7 @@
 services:
   - type: web
     name: skypoint-social-backend
+    runtime: dotnet
     plan: free
     buildCommand: dotnet build Skypoint.API/Skypoint.API/Skypoint.API.csproj
     startCommand: dotnet Skypoint.API/Skypoint.API/Skypoint.API.dll
