@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: skypoint-social-backend
+    env: dotnet
+    branch: main
+    buildCommand: dotnet build Skypoint.API/Skypoint.API.csproj
+    startCommand: dotnet Skypoint.API/Skypoint.API.dll
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: ConnectionStrings__DefaultConnection
+        value: Data Source=skypoint.db
+      - key: Jwt__Key
+        value: MySuperSecretKeyForJwtToken123!@#2024
+      - key: Jwt__Issuer
+        value: SkypointPlatform
+      - key: Jwt__Audience
+        value: SkypointUsers

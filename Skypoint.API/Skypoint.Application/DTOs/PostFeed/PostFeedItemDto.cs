@@ -15,5 +15,7 @@ namespace Skypoint.Application.DTOs.PostFeed
         public string TimeAgo { get; set; }
         public int? UserVote { get; set; }
         public bool IsFollowing { get; set; }
+        public int UpVotes { get; set; }
+        public int DownVotes { get; set; }
     }
 }

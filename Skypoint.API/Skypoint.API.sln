@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skypoint.API", "Skypoint.API\Skypoint.API.csproj", "{A2E2D700-35B5-49E2-9B1D-5CAA7743AA74}"
 EndProject
@@ -10,6 +10,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skypoint.Infrastructure", "Skypoint.Infrastructure\Skypoint.Infrastructure.csproj", "{E9A575F0-A26E-4E8F-AA71-FF7EE9444157}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skypoint.Domain", "Skypoint.Domain\Skypoint.Domain.csproj", "{03C97C46-B718-45D3-93D3-1D05B3E0C484}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A9074A09-7A6F-43D0-A8A0-2E18C62B1C6C}"
+	ProjectSection(SolutionItems) = preProject
+		render.yaml = render.yaml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

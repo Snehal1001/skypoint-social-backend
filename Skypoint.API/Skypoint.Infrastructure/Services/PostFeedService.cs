@@ -40,6 +40,8 @@ namespace Skypoint.Infrastructure.Services
                     Score = p.Votes.Sum(v => v.Value),
                     TimeAgo = GetTimeAgo(p.CreatedAt),
                     IsFollowing = followedUserIds.Contains(p.AuthorId),
+                    UpVotes = p.UpVotes,
+                    DownVotes = p.DownVotes,
                     UserVote = p.Votes
                         .Where(v => v.UserId == userId)
                         .Select(v => (int?)v.Value)

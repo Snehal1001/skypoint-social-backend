@@ -45,7 +45,7 @@ namespace Skypoint.API.Controllers
 
             return Ok(new
             {
-                sessionDuration = $"{duration.Value.TotalMinutes:F1} minutes"
+                SessionDuration = $"{duration.Value.TotalMinutes:F1} minutes"
             });
         }
 
